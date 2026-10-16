@@ -62,7 +62,6 @@ def chat_endpoint(request: ChatRequest, req: Request):
         )
 
 
-
 @app.get("/finance/saldo", response_model=BudgetSummaryResponse)
 def get_budget_saldo(year: Optional[int] = None, month: Optional[int] = None):
     """

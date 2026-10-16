@@ -7,10 +7,10 @@ from loguru import logger
 import sys
 
 # ============ Caminhos ============= #
-_THIS = Path(__file__)
-SRC_DIR = _THIS.parent          # kallia/api/src/
-API_DIR = SRC_DIR.parent        # kallia/api/
-ROOT_DIR = API_DIR.parent       # kallia/  (raiz do repo)
+_THIS = Path(__file__).resolve()
+SRC_DIR = _THIS.parent          # kallia/src/
+ROOT_DIR = SRC_DIR.parent       # kallia/ (raiz do repo)
+
 
 # Diretório de bancos de dados:
 # 1. /databases se existir (ambiente Docker)

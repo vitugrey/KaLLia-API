@@ -1,13 +1,13 @@
 services:
 
   kallia-api:
-    build: ./api
+    build: .
     container_name: kallia-api
     restart: always
     ports:
       - "1904:1904"
     volumes:
-      - ./api:/app
+      - .:/app
       - /app/.venv
       - ./databases:/databases
       - /sys:/sys:ro

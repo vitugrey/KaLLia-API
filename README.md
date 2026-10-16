@@ -45,10 +45,11 @@ A API gerencia raciocínio multimodal, execução segura de ferramentas (*functi
 
 ```
 kallia/
-├── api/                  # Backend FastAPI e orquestrador de agentes Agno
-│   ├── src/              # Rotas, agente, personalidade, ferramentas e fallback
-│   ├── Dockerfile        # Containerização da API
-│   └── pyproject.toml    # Dependências com UV
+├── src/                  # Rotas, agente, personalidade, ferramentas e fallback
+├── main.py               # Ponto de entrada do Uvicorn / FastAPI
+├── Dockerfile            # Containerização da API
+├── pyproject.toml        # Dependências com UV
+├── uv.lock               # Lockfile de dependências
 ├── databases/            # Volume de bancos SQLite e logs (compartilhado)
 │   ├── kallia-agent.db   # Sessões e memórias do Agno
 │   ├── kallia-financa.db # Banco de dados financeiro relacional
