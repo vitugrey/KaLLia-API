@@ -5,7 +5,7 @@ from loguru import logger
 from src.config import DATA_DIR
 
 # ============ Configuração de Logging ============ #
-LOG_FILE = DATA_DIR / "kallia.log"
+LOG_FILE = DATA_DIR / "KaLLia_agents.log"
 
 # Formato padrão para arquivo (sem cores, com todos os detalhes)
 _FILE_FORMAT = (
@@ -24,7 +24,7 @@ def setup_logger():
     """
     Configura o Loguru com dois destinos:
       - Terminal: colorido, nível DEBUG
-      - Arquivo:  kallia.log rotativo por dia, nível DEBUG, retido por 30 dias
+      - Arquivo:  KaLLia_agents.log rotativo por dia, nível DEBUG, retido por 30 dias
     Deve ser chamado uma única vez na inicialização da aplicação.
     """
     logger.remove()  # Remove o handler padrão
@@ -44,7 +44,6 @@ def setup_logger():
         level="DEBUG",
         rotation="00:00",       # Novo arquivo todo dia à meia-noite
         retention="30 days",    # Mantém 30 dias de histórico
-        compression="zip",      # Comprime os logs antigos
         encoding="utf-8",
         enqueue=True,           # Thread-safe (importante para o FastAPI)
     )
