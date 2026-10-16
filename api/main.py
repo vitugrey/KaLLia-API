@@ -1,3 +1,4 @@
+import os
 import uvicorn
 # pyrefly: ignore [missing-import]
 from src.config import HOST, PORT
@@ -9,5 +10,6 @@ setup_logger()
 
 if __name__ == "__main__":
     print(f"Iniciando o servidor da KaLLia em http://{HOST}:{PORT}")
-    uvicorn.run("src.routes:app", host=HOST, port=PORT, reload=True)
+    reload = os.getenv("UVICORN_RELOAD", "false").lower() in ("1", "true")
+    uvicorn.run("src.routes:app", host=HOST, port=PORT, reload=reload, reload_dirs=["src"] if reload else None)
 

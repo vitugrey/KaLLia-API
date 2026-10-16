@@ -4,13 +4,21 @@ from pathlib import Path
 from dotenv import load_dotenv
 from loguru import logger
 
+import sys
+
 # ============ Caminhos ============= #
 _THIS = Path(__file__)
 SRC_DIR = _THIS.parent          # kallia/api/src/
 API_DIR = SRC_DIR.parent        # kallia/api/
 ROOT_DIR = API_DIR.parent       # kallia/  (raiz do repo)
-# ../databases (fora do repo, mesmo lugar de antes)
-DATA_DIR = ROOT_DIR.parent / "databases"
+
+# Diretório de bancos de dados:
+# 1. /databases se existir (ambiente Docker)
+# 2. ROOT_DIR / "databases" (local monorepo kallia/databases)
+if Path("/databases").exists() and not sys.platform.startswith("win"):
+    DATA_DIR = Path("/databases")
+else:
+    DATA_DIR = ROOT_DIR / "databases"
 
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 

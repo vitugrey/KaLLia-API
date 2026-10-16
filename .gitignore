@@ -14,6 +14,11 @@ wheels/
 
 # Local data & database files
 data/
+databases/*.db
+databases/*.log*
+databases/*.zip
+*.sqlite3
+*.db
 
 # Pyrogram session files (gerados na primeira autenticação do bot)
 *.session

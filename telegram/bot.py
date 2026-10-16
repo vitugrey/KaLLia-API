@@ -22,7 +22,11 @@ from pyrogram.enums import ChatAction
 # ============ Logger ============ #
 def setup_logger():
     """Configura o Loguru: terminal sempre + arquivo compartilhado se o volume estiver montado."""
-    LOG_FILE = Path("/databases/kallia.log")
+    ROOT_DIR = Path(__file__).resolve().parent.parent
+    if Path("/databases").exists() and not sys.platform.startswith("win"):
+        LOG_FILE = Path("/databases/kallia.log")
+    else:
+        LOG_FILE = ROOT_DIR / "databases" / "kallia.log"
 
     logger.remove()
 
