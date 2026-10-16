@@ -13,18 +13,3 @@ services:
       - /sys:/sys:ro
     env_file:
       - ./.env
-
-  kallia-telegram:
-    build: ./telegram
-    container_name: kallia-telegram
-    restart: always
-    volumes:
-      - ./telegram:/app
-      - ./databases:/databases   # mesmo volume da API -> logs no mesmo kallia.log
-    env_file:
-      - ./.env        # .env compartilhado na raiz do monorepo
-    environment:
-      - KALLIA_API_URL=http://kallia-api:1904
-    depends_on:
-      - kallia-api
-
